@@ -22,7 +22,7 @@ public class ListItemController {
     }
     @GetMapping(value = "/list/{id}")
     public ListItem getListItemsById(@PathVariable("id") Long id) throws EntityNotFoundException{return listItemService.getListItemById(id);}
-    @DeleteMapping(value = "list/{id}")
-    public void deleteListItemById(@PathVariable("id") Long id){listItemService.deleteById(id);}
+    @DeleteMapping(value = "/list/{id}")
+    public void deleteListItemById(@PathVariable("id") Long id){listItemService.deleteListItemById(id);}
 
 }

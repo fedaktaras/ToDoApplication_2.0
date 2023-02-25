@@ -6,6 +6,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,5 +15,13 @@ public class ListItemService {
     ListItemRepository listItemRepository;
     public void addListItem(ListItem listItem){listItemRepository.save(listItem);}
     public ListItem getListItemById(Long id) throws EntityNotFoundException {return listItemRepository.findById(id).orElseThrow(EntityNotFoundException::new);}
-    public void deleteById(Long id) {listItemRepository.deleteById(id);}
+    public void updateListItem(ListItem listItem){listItemRepository.save(listItem);}
+    public boolean deleteListItemById(Long id) {
+        try {
+            listItemRepository.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

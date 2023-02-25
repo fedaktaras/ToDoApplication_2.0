@@ -1,6 +1,9 @@
 package com.example.ToDoApplication;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -10,11 +13,15 @@ public class ListWithItems {
     @Id
     @GeneratedValue
     private Long id;
+    @NotNull
     private String title;
-    @OneToMany(mappedBy = "listWithItems", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "listWithItems", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<ListItem> listOfListItems;
     public ListWithItems(){}
     public ListWithItems(String title) {this.title = title;}
+    public ListWithItems(String title, List<ListItem> listOfListItems) {this.title = title; this.listOfListItems = listOfListItems;}
     public Long getId() {return id;}
     public void setId(Long id) {this.id = id;}
     public String getTitle() {return title;}
