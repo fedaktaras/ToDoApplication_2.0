@@ -1,5 +1,4 @@
 package com.example.ToDoApplication.Services;
-
 import com.example.ToDoApplication.ListWithItems;
 import com.example.ToDoApplication.Repositories.ListWithItemsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ public class ListWithItemsService {
     public ListWithItems getListWithItemsById(Long id){return listWithItemsRepository.findById(id).get();}
     @Transactional
     public void deleteListWithItemsByID(Long id) {listWithItemsRepository.deleteById(id);}
-
     public ListWithItems updateListWithItemsAndFlush(ListWithItems listWithItems) {
         return listWithItemsRepository.saveAndFlush(listWithItems);
     }

@@ -1,12 +1,9 @@
 package com.example.ToDoApplication;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
-
 @Entity
 @Table(name = "list_with_items")
 public class ListWithItems {

@@ -1,5 +1,4 @@
 package com.example.ToDoApplication.Controllers;
-
 import com.example.ToDoApplication.ListItem;
 import com.example.ToDoApplication.ListWithItems;
 import com.example.ToDoApplication.Services.ListItemService;
@@ -24,5 +23,4 @@ public class ListItemController {
     public ListItem getListItemsById(@PathVariable("id") Long id) throws EntityNotFoundException{return listItemService.getListItemById(id);}
     @DeleteMapping(value = "/list/{id}")
     public void deleteListItemById(@PathVariable("id") Long id){listItemService.deleteListItemById(id);}
-
 }

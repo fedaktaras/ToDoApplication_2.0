@@ -1,13 +1,12 @@
 package com.example.ToDoApplication.Controllers;
-import com.example.ToDoApplication.ListItem;
 import com.example.ToDoApplication.ListWithItems;
 import com.example.ToDoApplication.ListWithItemsUpdateTitleDTO;
 import com.example.ToDoApplication.Services.ListItemService;
 import com.example.ToDoApplication.Services.ListWithItemsService;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -42,13 +41,15 @@ public class ListWithItemsController {
     }
     @DeleteMapping("/lists/{ListId}/{ItemId}")
     public ResponseEntity<ListWithItems> updateListWithTasksDeleteItem(@Valid @PathVariable("ListId")Long ListId, @PathVariable("ItemId")Long ItemId){
-
-        listItemService.deleteListItemById(ItemId);
         ListWithItems listWithItems =  listWithItemsService.getListWithItemsById(ListId);
-        //Hibernate.initialize(listWithItems);
+        listItemService.deleteListItemById(ItemId);
         return ResponseEntity.ok(listWithItems);
     }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void deleteListItemInNewTransaction(Long itemId) {
+        listItemService.deleteListItemById(itemId);
+    }
     @DeleteMapping(value = "/lists/{id}")
     public void deleteListWithItemById(@PathVariable Long id){listWithItemsService.deleteListWithItemsByID(id);}
 }

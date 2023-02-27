@@ -1,9 +1,7 @@
 package com.example.ToDoApplication;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import org.jetbrains.annotations.NotNull;
-
 @Entity
 @Table(name = "list_item")
 public class ListItem {
@@ -18,7 +16,7 @@ public class ListItem {
         this.title = title;
         this.text = text;
     }
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "list_with_items_id")
     @JsonBackReference
     private ListWithItems listWithItems;

@@ -1,13 +1,10 @@
 package com.example.ToDoApplication.Services;
-
 import com.example.ToDoApplication.ListItem;
 import com.example.ToDoApplication.Repositories.ListItemRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ListItemService {
@@ -16,6 +13,7 @@ public class ListItemService {
     public void addListItem(ListItem listItem){listItemRepository.save(listItem);}
     public ListItem getListItemById(Long id) throws EntityNotFoundException {return listItemRepository.findById(id).orElseThrow(EntityNotFoundException::new);}
     public void updateListItem(ListItem listItem){listItemRepository.save(listItem);}
+    @Transactional
     public boolean deleteListItemById(Long id) {
         try {
             listItemRepository.deleteById(id);
