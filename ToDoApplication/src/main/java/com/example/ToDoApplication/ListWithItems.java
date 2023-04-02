@@ -13,6 +13,7 @@ public class ListWithItems {
     @NotNull
     private String title;
     @OneToMany(mappedBy = "listWithItems", cascade = CascadeType.ALL)
+    @OrderBy("previous ASC NULLS FIRST")
     @JsonManagedReference
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<ListItem> listOfListItems;

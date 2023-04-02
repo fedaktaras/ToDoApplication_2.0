@@ -15,16 +15,16 @@ public class ListItem {
     private Long next;
     private Long previous;
     public ListItem() {}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "list_with_items_id")
+    @JsonBackReference
+    private ListWithItems listWithItems;
     public ListItem(String title, String text, Long next, Long previous) {
         this.title = title;
         this.text = text;
         this.next = next;
         this.previous = previous;
     }
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "list_with_items_id")
-    @JsonBackReference
-    private ListWithItems listWithItems;
     public Long getNext() {return next;}
     public void setNext(Long next) {this.next = next;}
     public Long getPrevious() {return previous;}
