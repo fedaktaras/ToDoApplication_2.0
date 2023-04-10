@@ -4,7 +4,7 @@ It has two entities, two rest controllers, and two repositories.
 The application allows users to create lists (ListWithItems) and add cards (ListItems) to them. 
 Users can drag and drop to change the order of the lists and cards, and they can also move cards from one list to another.
 
-![How it works.](C:\Users\taras\IdeaProjects\ToDoApplication\ToDoApplication_2.0.png)
+![How it works.](ToDoApplication_2.0.png)
 
 ## Entities
 The application has two entities: ListWithItems and ListItem.
