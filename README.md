@@ -4,6 +4,7 @@ It has two entities, two rest controllers, and two repositories.
 The application allows users to create lists (ListWithItems) and add cards (ListItems) to them. 
 Users can drag and drop to change the order of the lists and cards, and they can also move cards from one list to another.
 
+### Example from Terllo
 ![How it works.](ToDoApplication_2.0.png)
 
 ## Entities
