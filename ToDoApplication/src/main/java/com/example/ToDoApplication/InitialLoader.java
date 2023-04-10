@@ -3,7 +3,6 @@ import com.example.ToDoApplication.Services.ListItemService;
 import com.example.ToDoApplication.Services.ListWithItemsService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
 @Component
 public class InitialLoader implements CommandLineRunner {
     private final ListItemService listItemService;
